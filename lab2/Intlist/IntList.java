@@ -61,7 +61,6 @@ public class IntList {
         }
         return res;
     }
-
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
      */
@@ -72,6 +71,7 @@ public class IntList {
         return new IntList(L.first * L.first, squareListRecursive(L.rest));
     }
 
+
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
 
@@ -81,8 +81,10 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList ptr = A;
+        for(ptr = A; ptr.rest != null ; ptr = ptr.rest);
+        ptr.rest = B;
+        return A;
     }
 
     /**
@@ -90,8 +92,18 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+
+       IntList newList = new IntList(A.first,null);
+       IntList temp = newList;
+       for(IntList i = A.rest; i != null ; i = i.rest){
+           temp.rest = new IntList(i.first,null);
+           temp = temp.rest;
+       }
+       for(IntList i = B; i != null ; i = i.rest){
+           temp.rest = new IntList(i.first,null);
+           temp = temp.rest;
+       }
+       return newList;
     }
 
 
